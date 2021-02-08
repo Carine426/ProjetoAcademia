@@ -1,0 +1,46 @@
+package br.com.empresa.Academico.model;
+
+import java.time.LocalDate;
+
+public class Projetoacademico {
+	
+	private String name;
+	private LocalDate datanascimento;
+	private char sexo;
+	private double peso; 
+	private  double altura;
+	private int niveldeatividade;
+	
+	public void setName(String name ) {
+		this.name = name;
+	}
+	
+	public void setDatadenascimento(LocalDate datadenascimento) {
+		this.Datadenascimento = datadenascimento;
+		
+		}
+	
+		
+		public double getAltura() {
+		return this.altura;
+			
+		}
+		
+	    public void setBase(double base) {
+			this.base = base;
+		}
+	    
+	     
+	    public double getBase() {
+	    	return this.base;
+	    }
+	    
+	    public double calcularArea( ) {
+	    	return this.base * this.altura;
+	    }
+	    
+	     public double calcularPerimetro() {
+	    	 return 2 * (this.base + this.altura);
+}
+
+ 
