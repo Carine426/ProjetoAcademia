@@ -17,11 +17,12 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import br.com.empresa.Academico.model.Cliente;
-import br.com.empresa.Academico.model.NivelAtividade;
+
+
+
 
 public class FrameTela {
 	
-	protected AbstractButton jFormattedTextDatadenascimento;
 
 	public void criarTela() {
 		
@@ -30,8 +31,8 @@ public class FrameTela {
 	JFrame telaCliente = new JFrame ();
 	telaCliente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	telaCliente.setTitle("Calculando o IMC E NCD");
-	telaCliente.setSize(600, 550);
-	Color verde = new Color (153, 234, 191);
+	telaCliente.setSize(600, 500);
+	Color roxo = new Color (255, 192, 203);
 	
 	//Nome do Cliente
 	
@@ -43,19 +44,22 @@ public class FrameTela {
 	 JTextField textNome = new JTextField();
 	 textNome.setBounds(120, 20, 150, 30);
 	 
-	 // data de nascimento
+	
 	 
-	 JLabel labelNascimento = new JLabel ();
-	 labelNascimento.setText("Data de Nascimento: ");
-	 labelNascimento.setBounds(10, 70, 140, 30);
-	 labelNascimento.setFont(new Font ("Arial", Font.BOLD,13));
+	 // idade
 	 
-	 JTextField textNascimento = new JTextField();
-	 textNascimento.setBounds(170, 70, 90, 30);
+	 JLabel labelIdade = new JLabel ();
+	 labelIdade.setText(" Idade: ");
+	 labelIdade.setBounds(10, 70, 50, 30);
+	 labelIdade.setFont(new Font ("Arial", Font.BOLD,13));
+	 
+	 JTextField textIdade = new JTextField();
+	 textIdade.setBounds(170, 70, 90, 30);
+	 
 	 
       // sexo
 	 
-	 JLabel labelSexo = new JLabel ();
+	 JLabel labelSexo = new JLabel();
 	 labelSexo.setText("Sexo: ");
 	 labelSexo.setBounds(10, 120, 80, 30);
 	 labelSexo.setFont(new Font ("Arial", Font.BOLD,13));
@@ -66,9 +70,9 @@ public class FrameTela {
 	 radioFeminino.setBounds(100, 120, 80, 30);
 	 ButtonGroup bg = new ButtonGroup();
 	 bg.add(radioMasculino);bg.add(radioFeminino);
-	 Color green = new Color(153, 234, 191);
-	 radioMasculino.setBackground(verde);
-	 radioFeminino.setBackground(verde);
+	 Color pink = new Color(255, 192, 203);
+	 radioMasculino.setBackground(pink);
+	 radioFeminino.setBackground(roxo);
 	 
  	 //Peso
 	 
@@ -102,7 +106,7 @@ public class FrameTela {
 	 
 	 JPanel container = new JPanel();
 	 
-	 box.addItem("Qual seu nível de Atividade?");
+
 	 box.addItem("Leve");
 	 box.addItem("Moderado");
 	 box.addItem("Intenso");
@@ -121,12 +125,14 @@ public class FrameTela {
 	 buttonLimpar.setText("Limpar");
 	 buttonLimpar.setBounds(275, 400, 110, 30);
 	 Color azul = new Color(153, 217, 234);
+	 buttonLimpar.setBackground(azul);
 	 buttonLimpar.setFont(new Font ("Arial", Font.BOLD,13));
+	 
 	 
 	 //Valores
 	 
 	 JLabel labelValores = new JLabel ();
-	 labelValores.setText("Resultado: ");
+	 labelValores.setText("Resultado ");
 	 labelValores.setFont(new Font ("Arial", Font.BOLD,16));
 	 labelValores.setBounds(400, 50, 100, 60);
 	 
@@ -147,14 +153,16 @@ public class FrameTela {
 	 labelNCD.setFont(new Font ("Arial", Font.BOLD,13));
 	 
 	 JTextField textNCD = new JTextField();
+	 
+	 
 
-    telaCliente.getContentPane().add(textImc);
-    
-    telaCliente.getContentPane().add(labelImc);
-    
     telaCliente.getContentPane().add(textNCD);
-   
+    
     telaCliente.getContentPane().add(labelNCD);
+    
+    telaCliente.getContentPane().add(textImc);
+   
+    telaCliente.getContentPane().add(labelImc);
     
     telaCliente.getContentPane().add(labelValores);
     
@@ -175,16 +183,18 @@ public class FrameTela {
     telaCliente.getContentPane().add(textPeso);
     
     telaCliente.getContentPane().add(labelPeso);
-    
-    telaCliente.getContentPane().add(labelSexo);
+     
+    telaCliente.getContentPane().add(radioFeminino);
     
     telaCliente.getContentPane().add(radioMasculino);
     
-    telaCliente.getContentPane().add(radioFeminino);
+    telaCliente.getContentPane().add(labelSexo);
    
-    telaCliente.getContentPane().add(textNascimento);
+  
     
-    telaCliente.getContentPane().add(labelNascimento);
+    telaCliente.getContentPane().add(textIdade);
+    
+    telaCliente.getContentPane().add(labelIdade);
     
     telaCliente.getContentPane().add(textNome);
   
@@ -197,33 +207,41 @@ public class FrameTela {
  // *** Ouvintes de açoes/eventos
  // *** Ouvintes de açoes/eventos
     buttonCalcular.addActionListener(new ActionListener() {
-		
-    	@Override
-		public void actionPerformed(ActionEvent e) {
+    	
+   	 @Override
+   		public void actionPerformed(ActionEvent e) {
+   			
+   			
+   			Cliente aluno = new Cliente();
+   			aluno.setPeso(Double.parseDouble(textPeso.getText()));
+			aluno.setAltura(Double.parseDouble(textAltura.getText()));
+			aluno.setSexo(String.valueOf(radioMasculino.isSelected()?"Masculino":"Feminino"));
+			aluno.setIdade(Integer.parseInt(textIdade.getText()));
+			aluno.setNivelDeAtividade(String.valueOf(box.getSelectedItem().toString()));
 			
-			
-			Cliente r2 = new Cliente();
-			
-			r2.setAltura(Double.parseDouble(textAltura.getText()));
-			r2.setPeso(Double.parseDouble(textPeso.getText()));
-			
-		    if(radioFeminino.isSelected()) {
-		    r2.setSexo("Feminino");
-		    } else {
-		    	r2.setSexo("Masculino");
-		    }
-		    r2.setNiveldeatividade(labelAtividade.getText().toString());
-		    
-		    labelImc.setText(String.valueOf(r2.getImc()));
-		    labelImc.setText(String.valueOf(r2.getNcd()));
-		    
-			
-			
-			
-	
-    	}
+			labelImc.setText("IMC: " + String.valueOf(aluno.getImc()));
+			labelNCD.setText("NCD: " + String.valueOf(aluno.getNcd()));
+		}
 	});
-    
 
-   }
+
+    //Botão limpar
+    
+    buttonLimpar.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			textNome.setText("");
+			textAltura.setText("");
+			textIdade.setText("");
+			textPeso.setText("");
+			labelImc.setText("");
+			labelNCD.setText("");
+			labelAtividade.setText("Nenhuma Atividade");
+		}
+	});
+	}
 }
+
+	
+	

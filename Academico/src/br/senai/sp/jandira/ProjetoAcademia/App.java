@@ -2,10 +2,7 @@ package br.senai.sp.jandira.ProjetoAcademia;
 
 import java.time.LocalDate;
 import br.com.Academico.gui.FrameTela;
- 
 import br.com.empresa.Academico.model.Cliente;
-import br.com.empresa.Academico.model.NivelAtividade;
-import br.senai.sp.jandira.ProjetoAcademia.App;
 
  public class App {
 	
@@ -15,7 +12,7 @@ import br.senai.sp.jandira.ProjetoAcademia.App;
 //		 
 //		carine.setAltura(1.56);
 //		carine.setPeso(60);
-//		carine.setDatadenascimento(LocalDate.of(2002, 3, 31));
+//		carine.setDatadenascimento(LocalDate.of(2003, 3, 31));
 //		carine.getNcd();
 //		carine.setSexo("Feminino");
 //		carine.setNiveldeatividade(NivelAtividade.LEVE);
